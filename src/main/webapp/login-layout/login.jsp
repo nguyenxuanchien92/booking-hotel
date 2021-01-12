@@ -42,17 +42,16 @@
             <div class="col-md-8">
               <div class="mb-4">
                 <h3>Sign In</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                <p class="mb-4">Welcome to my hotel.</p>
               </div>
-              <form action="#" method="post">
+              <form action="" method="post">
                 <div class="form-group first">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username">
-
+                  <input type="text" class="form-control" id="username" name="txtNameAccount">
                 </div>
                 <div class="form-group last mb-4">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password">
+                  <input type="password" class="form-control" id="password" name="txtPassWord">
 
                 </div>
 
