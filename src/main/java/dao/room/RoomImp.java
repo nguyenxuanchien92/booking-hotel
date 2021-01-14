@@ -1,4 +1,4 @@
-package dao.home;
+package dao.room;
 
 import dao.ConnectionDB;
 import models.Customer;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class HomeImp implements UIHome {
+public class RoomImp implements UIRoom {
 
     ConnectionDB connectionDB = ConnectionDB.getInstance();
 

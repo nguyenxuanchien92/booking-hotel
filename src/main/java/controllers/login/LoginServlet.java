@@ -1,10 +1,7 @@
 package controllers.login;
 
-import dao.home.HomeImp;
-import dao.home.UIHome;
-import dao.login.LoginImp;
-import dao.login.UILogin;
-import models.Room;
+import dao.account.AccountImp;
+import dao.account.UIAccount;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-    private UILogin imp = new LoginImp();
+    private UIAccount imp = new AccountImp();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -1,5 +1,5 @@
-package dao.login;
+package dao.account;
 
-public interface UILogin {
+public interface UIAccount {
     boolean checkAccount(String nameAccount, String accountPass);
 }

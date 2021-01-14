@@ -1,4 +1,4 @@
-package dao.login;
+package dao.account;
 
 import dao.ConnectionDB;
 import models.Account;
@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginImp implements UILogin {
+public class AccountImp implements UIAccount {
     private ConnectionDB connectionDB = ConnectionDB.getInstance();
 
     @Override

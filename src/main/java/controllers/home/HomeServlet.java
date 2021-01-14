@@ -1,11 +1,10 @@
 package controllers.home;
 
-import dao.home.HomeImp;
-import dao.home.UIHome;
+import dao.room.RoomImp;
+import dao.room.UIRoom;
 import models.Room;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "/home")
 
 public class HomeServlet extends HttpServlet {
-    private UIHome impHome = new HomeImp();
+    private UIRoom impHome = new RoomImp();
 
     //region CONTROLLER
     @Override
