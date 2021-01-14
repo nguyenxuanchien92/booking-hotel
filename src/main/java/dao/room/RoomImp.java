@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -146,15 +147,15 @@ public class RoomImp implements UIRoom {
     }
 
     @Override
-    public boolean updateRoomDetail(String roomId, Date checkIn, Date chekOut, String CMT) {
+    public boolean updateRoomDetail(String roomId, LocalDate checkIn, LocalDate chekOut, String CMT) {
         boolean result = false;
 
         try {
             Connection connection = connectionDB.getConnection();
             CallableStatement callableStatement = connection.prepareCall(Query.UPDATE_ROOM_DETAIL);
             callableStatement.setString(1, roomId);
-            callableStatement.setDate(2, (java.sql.Date) checkIn);
-            callableStatement.setDate(3, (java.sql.Date) chekOut);
+            callableStatement.setDate(2, java.sql.Date.valueOf(checkIn));
+            callableStatement.setDate(3, java.sql.Date.valueOf(chekOut));
             callableStatement.setString(4, CMT);
 
             result = callableStatement.executeUpdate() > 0;

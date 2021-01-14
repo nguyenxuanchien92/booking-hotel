@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -115,10 +116,10 @@ public class HomeServlet extends HttpServlet {
         String idCard = request.getParameter("CMT");
 
         String strDateCheckIn = request.getParameter("dateCheckIn");
-        Date dateCheckIn = convertDate(strDateCheckIn);
+        LocalDate  dateCheckIn = convertDate(strDateCheckIn);
 
         String strDateCheckout = request.getParameter("dateCheckOut");
-        Date dateCheckOut = convertDate(strDateCheckout);
+        LocalDate dateCheckOut = convertDate(strDateCheckout);
 
 
         boolean result = validateDate(dateCheckIn, dateCheckOut);
@@ -131,41 +132,37 @@ public class HomeServlet extends HttpServlet {
         }
     }
 
-    private Date convertDate(String strDate) {
-        Date date = null;
+    private LocalDate convertDate(String strDate) {
+        LocalDate date = null;
         String pattern = "MM/DD/YYYY";
-        SimpleDateFormat format = new SimpleDateFormat(pattern);
-        try {
-            date = format.parse(strDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        date = LocalDate.parse(strDate);
 
         return date;
     }
 
-    private boolean validateDate(Date checkIn, Date checkOut) {
+    private boolean validateDate(LocalDate checkIn, LocalDate checkOut) {
         boolean result = false;
 
-        Date currentDate = convertDate(getDateTimeNow());
+//        LocalDate currentDate = convertDate(getDateTimeNow());
+        LocalDate currentDate = getDateTimeNow().toLocalDate();
 
-        if (checkIn.getTime() - currentDate.getTime() < 0) {
+        if (checkIn.getDayOfYear() - currentDate.getDayOfYear() < 0) {
             return false;
         } else {
-            if (checkIn.getTime() - checkOut.getTime() < 0) {
+            if (checkIn.getDayOfYear() - checkOut.getDayOfYear() < 0) {
                 result = true;
             }
             return result;
         }
     }
 
-    private String getDateTimeNow() {
+    private LocalDateTime getDateTimeNow() {
         String pattern = "MM/DD/YYYY";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         LocalDateTime localDateTime = LocalDateTime.now();
 
-        String date = formatter.format(localDateTime);
-        return date;
+        //String date = formatter.format(localDateTime);
+        return localDateTime;
     }
 
 

@@ -2,6 +2,7 @@ package dao.room;
 
 import models.Room;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface UIRoom {
 
     Room findCustomerByRoomId(String roomId);
 
-    boolean updateRoomDetail(String roomId, Date checkIn, Date chekOut, String CMT);
+    boolean updateRoomDetail(String roomId, LocalDate checkIn, LocalDate chekOut, String CMT);
 }
