@@ -7,4 +7,5 @@ public class Query {
     public static String FIND_CUS_BY_NAME = "call findCustomerByName(?)";
     public static String DELETE_ROOM_RENT = "call deleteRoomRent(?)";
     public static String FIND_CUSTOMER_BY_ROOM_ID = "call findCustomerByRoomId(?)";
+    public static String UPDATE_ROOM_DETAIL = "call updateRoomDetail(?,?,?,?)";
 }

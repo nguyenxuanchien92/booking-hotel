@@ -31,7 +31,8 @@ public class Customer {
         this.idCard = idCard;
     }
 
-    public Customer(){}
+    public Customer() {
+    }
 
     public Customer(String firstName, String lastName, Date dob, String idCard) {
         this.firstName = firstName;
@@ -40,14 +41,18 @@ public class Customer {
         this.idCard = idCard;
     }
 
+    public Customer(String firstName, String lastName, String idCard) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.idCard = idCard;
+    }
+
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-
-
-    public String getIdCard(){
+    public String getIdCard() {
         return idCard;
     }
 

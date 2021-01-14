@@ -7,14 +7,14 @@ public class Room {
     private Date dateOfRent;
     private Date checkOutDate;
     private boolean state;
-    private Customer person;
+    private Customer customer;
 
-    public Customer getPerson() {
-        return person;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setPerson(Customer person) {
-        this.person = person;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Room(String roomId, boolean state) {
@@ -22,12 +22,12 @@ public class Room {
         this.state = state;
     }
 
-    public Room(String roomId, Date dateOfRent, Date checkOutDate, boolean state, Customer person) {
+    public Room(String roomId, Date dateOfRent, Date checkOutDate, boolean state, Customer customer) {
         this.roomId = roomId;
         this.dateOfRent = dateOfRent;
         this.checkOutDate = checkOutDate;
         this.state = state;
-        this.person = person;
+        this.customer = customer;
     }
 
     public String getRoomId() {

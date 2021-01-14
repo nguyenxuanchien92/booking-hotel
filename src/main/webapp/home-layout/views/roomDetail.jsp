@@ -11,24 +11,24 @@
     <title></title>
 </head>
 <body>
-<h3><a href="/home">Back</a></h3>
-<form method="post" action="/home?a=edit&id=${requestScope.room.roomId}">
+<h3><a href="/home?action=home">Back</a></h3>
+<form method="post" action="?action=edit">
     <fieldset>
         <legend>Room Detail</legend>
         Mã phòng:<input type="text" name="txtRoomId" value="${requestScope.room.roomId}">
         <br>
         Trạng thái: <input type="text" name="txtState" value="${requestScope.room.state}">
         <br>
-        First Name:<input type="text" name="txtFirstName" value="${requestScope.room.person.firstName}">
+        First Name:<input type="text" name="txtFirstName" value="${requestScope.room.customer.firstName}">
         <br>
-        Last Name:<input type="text" name="txtLastName" value="${requestScope.room.person.lastName}">
+        Last Name:<input type="text" name="txtLastName" value="${requestScope.room.customer.lastName}">
         <br>
-        Check out:<input type="date" name="dateCheckIn" value="${requestScope.room.dateOfRent}">
+        Check in:<input type="date" name="dateCheckIn" value="${requestScope.room.dateOfRent}">
         <br>
-        Check in:<input type="date" name="dateCheckOut" value="${requestScope.room.checkOutDate}">
+        Check out:<input type="date" name="dateCheckOut" value="${requestScope.room.checkOutDate}">
         <br>
-<%--        <input type="hidden" name="id" value="${requestScope.room.roomId}"/>--%>
-<%--        <input type="hidden" name="a" value="edit" />--%>
+        CMT:<input type="text" name="CMT" value="${requestScope.room.customer.idCard}">
+        <br>
         <input type="submit" value="Save">
     </fieldset>
 </form>

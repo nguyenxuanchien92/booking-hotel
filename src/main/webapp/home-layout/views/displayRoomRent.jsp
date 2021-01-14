@@ -39,13 +39,15 @@
             <tr>
                 <td>${room.roomId}</td>
                 <td>${room.state}</td>
-                <td>${room.person.firstName}</td>
-                <td>${room.person.lastName}</td>
+                <td>${room.customer.firstName}</td>
+                <td>${room.customer.lastName}</td>
                 <td>${room.dateOfRent}</td>
                 <td>${room.checkOutDate}</td>
                 <td>
-
-                    <a href="/home?action=edit&id=${room.roomId}">Edit</a>
+<%--                    <a href="/home?action=edit&id=${room.roomId}">Edit</a>--%>
+                    <a href="/home?action=edit&id=${room.roomId}">
+                        <input type="submit" value="edit">
+                    </a>
                     <form method="post" action="?action=delete&id=${room.roomId}">
                         <input type="submit" value="delete">
                     </form>

@@ -131,8 +131,9 @@ public class RoomImp implements UIRoom {
                 String lastName = resultSet.getString("lastName");
                 Date checkIn = resultSet.getDate("dateRent");
                 Date checkOut = resultSet.getDate("checkOut");
+                String CMT = resultSet.getString("CMT");
 
-                room = new Room(id, checkIn, checkOut, state, new Customer(firstName, lastName));
+                room = new Room(id, checkIn, checkOut, state, new Customer(firstName, lastName, CMT));
             }
 
         } catch (SQLException exception) {
@@ -142,5 +143,27 @@ public class RoomImp implements UIRoom {
         }
 
         return room;
+    }
+
+    @Override
+    public boolean updateRoomDetail(String roomId, Date checkIn, Date chekOut, String CMT) {
+        boolean result = false;
+
+        try {
+            Connection connection = connectionDB.getConnection();
+            CallableStatement callableStatement = connection.prepareCall(Query.UPDATE_ROOM_DETAIL);
+            callableStatement.setString(1, roomId);
+            callableStatement.setDate(2, (java.sql.Date) checkIn);
+            callableStatement.setDate(3, (java.sql.Date) chekOut);
+            callableStatement.setString(4, CMT);
+
+            result = callableStatement.executeUpdate() > 0;
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }
