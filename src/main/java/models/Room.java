@@ -7,11 +7,27 @@ public class Room {
     private Date dateOfRent;
     private Date checkOutDate;
     private boolean state;
+    private Person person;
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public Room(String roomId, boolean state) {
         this.roomId = roomId;
         this.state = state;
+    }
+
+    public Room(String roomId, Date dateOfRent, Date checkOutDate, boolean state, Person person) {
+        this.roomId = roomId;
+        this.dateOfRent = dateOfRent;
+        this.checkOutDate = checkOutDate;
+        this.state = state;
+        this.person = person;
     }
 
     public String getRoomId() {

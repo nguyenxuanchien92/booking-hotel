@@ -18,6 +18,12 @@ public class Person {
         this.idCard = randomIdCard();
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
     private String randomIdCard(){
         String idCard = (new Random()).nextInt() + "A";
         return idCard;

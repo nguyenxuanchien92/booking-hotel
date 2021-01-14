@@ -54,21 +54,45 @@
         </div>
     </nav>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="content-container">
-        <table border="1">
+        <table border="1" align="center">
             <thead>
-                <tr>
-                    <td>Room ID</td>
-                    <td>State</td>
-                </tr>
+            <tr>
+                <td>Room ID</td>
+                <td>State</td>
+            </tr>
             </thead>
             <tbody>
-                <c:forEach items="${sessionScope.roomList}" var="room">
-                    <tr>
-                        <td>${room.roomId}</td>
-                        <td>${room.state}</td>
-                    </tr>
-                </c:forEach>
+            <c:forEach items="${requestScope.roomList}" var="room">
+                <tr>
+                    <td>${room.roomId}</td>
+                    <td>${room.state}</td>
+                </tr>
+            </c:forEach>
+            <% request.removeAttribute("roomList"); %>
             </tbody>
         </table>
     </div>

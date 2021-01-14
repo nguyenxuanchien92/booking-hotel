@@ -35,9 +35,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("Account", txtNameAccount);
             session.setAttribute("Pass", pass);
 
-
-
-            req.getRequestDispatcher("home-layout/home.jsp").forward(req,resp);
+            resp.sendRedirect("/home");
         } else {
             resp.sendRedirect("login");
         }

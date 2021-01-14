@@ -17,15 +17,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="login-form/fonts/icomoon/style.css">
+<link rel="stylesheet" href="login-layout/login-form/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="login-form/css/owl.carousel.min.css">
+<link rel="stylesheet" href="login-layout/login-form/css/owl.carousel.min.css">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="login-form/css/bootstrap.min.css">
+<link rel="stylesheet" href="login-layout/login-form/css/bootstrap.min.css">
 
 <!-- Style -->
-<link rel="stylesheet" href="login-form/css/style.css">
+<link rel="stylesheet" href="login-layout/login-form/css/style.css">
 <html>
   <head>
     <title>Login</title>
@@ -35,7 +35,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="login-form/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+          <img src="login-layout/login-form/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
