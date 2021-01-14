@@ -1,7 +1,7 @@
 package dao.home;
 
 import dao.ConnectionDB;
-import models.Person;
+import models.Customer;
 import models.Query;
 import models.Room;
 
@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class HomeImp implements UIHome {
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
 
-                Room room = new Room(roomId, checkIn, checkOut, state, new Person(firstName, lastName));
+                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName));
                 roomRent.add(room);
             }
 
@@ -87,7 +86,7 @@ public class HomeImp implements UIHome {
                 String firstName = result.getString("firstName");
                 String lastName = result.getString("lastName");
 
-                Room room = new Room(roomId, checkIn, checkOut, state, new Person(firstName, lastName));
+                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName));
                 roomCus.add(room);
             }
 
@@ -133,7 +132,7 @@ public class HomeImp implements UIHome {
                 Date checkIn = resultSet.getDate("dateRent");
                 Date checkOut = resultSet.getDate("checkOut");
 
-                room = new Room(id, checkIn, checkOut, state, new Person(firstName, lastName));
+                room = new Room(id, checkIn, checkOut, state, new Customer(firstName, lastName));
             }
 
         } catch (SQLException exception) {

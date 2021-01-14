@@ -11,7 +11,8 @@
     <title></title>
 </head>
 <body>
-<form method="post">
+<h3><a href="/home">Back</a></h3>
+<form method="post" action="/home?a=edit&id=${requestScope.room.roomId}">
     <fieldset>
         <legend>Room Detail</legend>
         Mã phòng:<input type="text" name="txtRoomId" value="${requestScope.room.roomId}">
@@ -26,6 +27,8 @@
         <br>
         Check in:<input type="date" name="dateCheckOut" value="${requestScope.room.checkOutDate}">
         <br>
+<%--        <input type="hidden" name="id" value="${requestScope.room.roomId}"/>--%>
+<%--        <input type="hidden" name="a" value="edit" />--%>
         <input type="submit" value="Save">
     </fieldset>
 </form>

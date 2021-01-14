@@ -3,31 +3,49 @@ package models;
 import java.util.Date;
 import java.util.Random;
 
-public class Person {
+public class Customer {
     private String firstName;
     private String lastName;
+    private String roomId;
+    private String employeeId;
     private Date dob;
     private String idCard;
 
-    public Person(){}
+    public String getRoomId() {
+        return roomId;
+    }
 
-    public Person(String firstName, String lastName, Date dob) {
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public Customer(){}
+
+    public Customer(String firstName, String lastName, Date dob, String idCard) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
-        this.idCard = randomIdCard();
+        this.idCard = idCard;
     }
 
-    public Person(String firstName, String lastName) {
+    public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
 
-    private String randomIdCard(){
-        String idCard = (new Random()).nextInt() + "A";
-        return idCard;
-    }
 
     public String getIdCard(){
         return idCard;

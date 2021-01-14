@@ -4,17 +4,14 @@ import dao.home.HomeImp;
 import dao.home.UIHome;
 import models.Room;
 
-import javax.servlet.AsyncContext;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/home")
@@ -22,7 +19,7 @@ import java.util.List;
 public class HomeServlet extends HttpServlet {
     private UIHome impHome = new HomeImp();
 
-
+    //region CONTROLLER
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -39,7 +36,7 @@ public class HomeServlet extends HttpServlet {
                 searchCustomerByName(req, resp);
                 break;
             case "edit":
-
+                showEditRoomForm(req, resp);
                 break;
             default:
                 displayListRoomEmpty(req, resp);
@@ -47,6 +44,25 @@ public class HomeServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        if (action == null) action = "";
+        switch (action) {
+
+            case "delete":
+                deleteRoomRent(req, resp);
+                break;
+            case "edit":
+                updateRoom(req, resp);
+                break;
+            default:
+                break;
+        }
+    }
+    //endregion
+
+    //region DISPLAY
     private void displayListRoomRent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Room> roomRents = impHome.displayRoomRent();
         req.setAttribute("roomRents", roomRents);
@@ -60,23 +76,16 @@ public class HomeServlet extends HttpServlet {
         req.getRequestDispatcher("home-layout/views/home.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if (action == null) action = "";
-        switch (action) {
+    private void searchCustomerByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("searchTxt");
 
-            case "delete":
-                deleteRoomRent(req, resp);
-                break;
-            case "edit":
-                editRoomRent(req, resp);
-                break;
-            default:
-                break;
-        }
+        List<Room> roomCus = impHome.findCustomerByName(name);
+        req.setAttribute("roomRents", roomCus);
+        req.getRequestDispatcher("home-layout/views/displayRoomRent.jsp").forward(req, resp);
     }
+    //endregion
 
+    //region DELETE
     private void deleteRoomRent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String roomId = req.getParameter("id");
         boolean result =impHome.deleteRoomRent(roomId);
@@ -86,8 +95,10 @@ public class HomeServlet extends HttpServlet {
             req.getRequestDispatcher("home-layout/views/displayRoomRent.jsp").forward(req, resp);
         }
     }
+    //endregion
 
-    private void editRoomRent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //region EDIT
+    private void showEditRoomForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String roomId = req.getParameter("id");
         Room room = impHome.findCustomerByRoomId(roomId);
@@ -95,11 +106,10 @@ public class HomeServlet extends HttpServlet {
         req.getRequestDispatcher("home-layout/views/roomDetail.jsp").forward(req, resp);
     }
 
-    private void searchCustomerByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("searchTxt");
+    private void updateRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Room> roomCus = impHome.findCustomerByName(name);
-        req.setAttribute("roomRents", roomCus);
-        req.getRequestDispatcher("home-layout/views/displayRoomRent.jsp").forward(req, resp);
     }
+
+
+    //endregion
 }

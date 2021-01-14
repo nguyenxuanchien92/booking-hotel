@@ -44,9 +44,8 @@
                 <td>${room.dateOfRent}</td>
                 <td>${room.checkOutDate}</td>
                 <td>
-                    <form method="post" action="?action=edit&id=${room.roomId}">
-                        <input type="submit" value="edit">
-                    </form>
+
+                    <a href="/home?action=edit&id=${room.roomId}">Edit</a>
                     <form method="post" action="?action=delete&id=${room.roomId}">
                         <input type="submit" value="delete">
                     </form>
