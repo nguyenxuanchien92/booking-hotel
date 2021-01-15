@@ -129,7 +129,7 @@ public class HomeServlet extends HttpServlet {
             boolean valid = impHome.updateRoomDetail(idRoom, dateCheckIn,
                     dateCheckOut, idCard);
             if (valid) {
-                System.out.println("thành công");
+               response.sendRedirect("home-layout/views/displayRoomRent.jsp");
             }
         }
     }
