@@ -56,8 +56,9 @@ public class RoomImp implements UIRoom {
                 Date checkOut = resultSet.getDate("checkOut");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
+                String CMT = resultSet.getString("CMT");
 
-                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName));
+                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName, CMT));
                 roomRent.add(room);
             }
 
@@ -71,12 +72,13 @@ public class RoomImp implements UIRoom {
     }
 
     @Override
-    public List<Room> findCustomerByName(String nameCus) {
+    public List<Room> findCustomerByName(String nameCus, String CMT) {
         List<Room> roomCus = new ArrayList<>();
         try {
             Connection connection = connectionDB.getConnection();
             CallableStatement callableStatement = connection.prepareCall(Query.FIND_CUS_BY_NAME);
             callableStatement.setString(1, nameCus);
+            callableStatement.setString(2, CMT);
             ResultSet result = callableStatement.executeQuery();
 
             while (result.next()) {
@@ -86,8 +88,9 @@ public class RoomImp implements UIRoom {
                 Date checkOut = result.getDate("checkOut");
                 String firstName = result.getString("firstName");
                 String lastName = result.getString("lastName");
+                String idCard = result.getString("CMT");
 
-                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName));
+                Room room = new Room(roomId, checkIn, checkOut, state, new Customer(firstName, lastName, idCard));
                 roomCus.add(room);
             }
 
@@ -101,12 +104,13 @@ public class RoomImp implements UIRoom {
     }
 
     @Override
-    public boolean deleteRoomRent(String roomId) {
+    public boolean deleteRoomRent(String roomId, String CMT) {
         boolean result = false;
         try {
             Connection connection = connectionDB.getConnection();
             CallableStatement callableStatement = connection.prepareCall(Query.DELETE_ROOM_RENT);
             callableStatement.setString(1, roomId);
+            callableStatement.setString(2, CMT);
             result = callableStatement.executeUpdate() > 0;
 
         } catch (SQLException exception) {

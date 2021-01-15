@@ -11,9 +11,9 @@ public interface UIRoom {
 
     List<Room> displayRoomRent();
 
-    List<Room> findCustomerByName(String nameCus);
+    List<Room> findCustomerByName(String nameCus, String CMT);
 
-    boolean deleteRoomRent(String roomId);
+    boolean deleteRoomRent(String roomId, String CMT);
 
     Room findCustomerByRoomId(String roomId);
 

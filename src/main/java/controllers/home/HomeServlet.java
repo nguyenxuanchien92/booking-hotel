@@ -83,8 +83,9 @@ public class HomeServlet extends HttpServlet {
 
     private void searchCustomerByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("searchTxt");
+        String CMT = req.getParameter("CMT");
 
-        List<Room> roomCus = impHome.findCustomerByName(name);
+        List<Room> roomCus = impHome.findCustomerByName(name,CMT);
         req.setAttribute("roomRents", roomCus);
         req.getRequestDispatcher("home-layout/views/displayRoomRent.jsp").forward(req, resp);
     }
@@ -93,7 +94,8 @@ public class HomeServlet extends HttpServlet {
     //region DELETE
     private void deleteRoomRent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String roomId = req.getParameter("id");
-        boolean result = impHome.deleteRoomRent(roomId);
+        String CMT = req.getParameter("cmt");
+        boolean result = impHome.deleteRoomRent(roomId, CMT);
         if (result) {
             List<Room> roomRents = impHome.displayRoomRent();
             req.setAttribute("roomRents", roomRents);
@@ -116,7 +118,7 @@ public class HomeServlet extends HttpServlet {
         String idCard = request.getParameter("CMT");
 
         String strDateCheckIn = request.getParameter("dateCheckIn");
-        LocalDate  dateCheckIn = convertDate(strDateCheckIn);
+        LocalDate dateCheckIn = convertDate(strDateCheckIn);
 
         String strDateCheckout = request.getParameter("dateCheckOut");
         LocalDate dateCheckOut = convertDate(strDateCheckout);
@@ -126,7 +128,7 @@ public class HomeServlet extends HttpServlet {
         if (result) {
             boolean valid = impHome.updateRoomDetail(idRoom, dateCheckIn,
                     dateCheckOut, idCard);
-            if(valid){
+            if (valid) {
                 System.out.println("thành công");
             }
         }

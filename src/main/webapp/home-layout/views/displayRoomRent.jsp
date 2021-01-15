@@ -17,7 +17,8 @@
     <form>
         <div id="search" align="center">
             <input type="hidden" name="action" value="search">
-            <input type="text" name="searchTxt">
+            <input type="text" name="searchTxt" placeholder="Enter your name">
+            <input type="text" name="CMT" placeholder="Enter your id card">
             <input type="submit" value="search">
         </div>
     </form>
@@ -48,7 +49,7 @@
                     <a href="/home?action=edit&id=${room.roomId}">
                         <input type="submit" value="edit">
                     </a>
-                    <form method="post" action="?action=delete&id=${room.roomId}">
+                    <form method="post" action="?action=delete&id=${room.roomId}&cmt=${room.customer.idCard}">
                         <input type="submit" value="delete">
                     </form>
                 </td>
